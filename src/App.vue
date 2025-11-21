@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Hola Mundo desde Vue JS"/>
+  <HelloWorld msg="Hola Mundo VUE js. desde SAPC33"/>
 </template>
 
 <script>
