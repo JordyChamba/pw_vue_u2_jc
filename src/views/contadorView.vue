@@ -1,17 +1,17 @@
 <template>
-    <contador />
     <div>
-        <h1>Hola mundo desde la vista!</h1>
+        <contador titulo2="Contador 1" :inicio="4 + 4" :mostrar="true" />
+        <contador titulo2="Contador 2" :inicio="2 * 10" :mostrar="false" />
     </div>
 </template>
 
 <script>
-import contador from '@/components/contador.vue';
+import contador from '../components/contador.vue';
 export default {
     components: {
-        contador
-    }
-}
+        contador,
+    },
+};
 </script>
 
 <style></style>
