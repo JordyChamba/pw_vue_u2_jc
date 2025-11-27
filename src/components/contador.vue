@@ -61,7 +61,13 @@ export default {
 
     props: {
         titulo2: String,
-        inicio: Number,
+        inicio: {
+            type: Number,
+            default: 99,
+            validator(value) {
+                return value > 10;
+            },
+        },
         mostrar: Boolean
     }
     /*String, Number, Boolean, Object, Date, Array, Function, BigInt */

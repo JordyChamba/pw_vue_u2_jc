@@ -1,7 +1,7 @@
 <template>
     <div>
-        <contador titulo2="Contador 1" :inicio="4 + 4" :mostrar="true" />
-        <contador titulo2="Contador 2" :inicio="2 * 10" :mostrar="false" />
+        <contador titulo2="Contador 1" :inicio="20" :mostrar="true" />
+        <contador titulo2="Contador 2" :inicio="4" :mostrar="false" />
     </div>
 </template>
 
