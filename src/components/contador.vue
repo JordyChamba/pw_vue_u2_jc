@@ -75,23 +75,4 @@ export default {
 </script>
 
 <!--css-->
-<style>
-h1 {
-    background-color: greenyellow;
-    height: 40px;
-    width: 200px;
-}
-
-p {
-    background-color: burlywood;
-    width: 70px;
-}
-
-button {
-    background-color: aqua;
-    height: 20px;
-    width: 60px;
-    border-radius: 3px;
-    margin: 5px;
-}
-</style>
+<style></style>
