@@ -16,6 +16,14 @@
             <button @click="agregarEstudiante()">Agregar estudiante</button>
         </div>
 
+        <hr />
+        <div>
+            <label for="nombre1"> Nombre </label>
+            <input id="nombre1" type="text" v-model="nombre1">
+            <label for="apellido1"> Apellido </label>
+            <input v-on:keypress.enter="agregarEstudiante1" id="apellido1" type="text" v-model="apellido1" />
+        </div>
+
         <p v-if="mensaje" class="mensaje">{{ mensaje }}</p>
 
         <h2>Estudiantes agregados</h2>
@@ -54,6 +62,8 @@ export default {
         return {
             nombre: "",
             apellido: "",
+            nombre1: "",
+            apellido1: "",
             arreglo: [],
             mensaje: "",
         };
@@ -94,6 +104,25 @@ export default {
             this.mostrarMensaje("Estudiante agregado correctamente!");
         },
 
+        agregarEstudiante1() {
+            if (!this.nombre1.trim() || !this.apellido1.trim()) {
+                this.mostrarMensaje("Debes completar ambos campos.");
+                return;
+            }
+
+            const estu = {
+                nombre: this.nombre1.trim(),
+                apellido: this.apellido1.trim(),
+            };
+
+            console.log("Se agrega estudiante", estu);
+
+            this.arreglo.push(estu);
+            this.nombre1 = "";
+            this.apellido1 = "";
+            this.mostrarMensaje("Estudiante agregado correctamente!");
+        },
+
         limpiarFormulario() {
             this.nombre = "";
             this.apellido = "";
@@ -103,7 +132,7 @@ export default {
 </script>
 
 <style scoped>
-.form-container {
+/*.form-container {
     max-width: 400px;
     margin: auto;
     font-family: sans-serif;
@@ -116,16 +145,16 @@ export default {
 input {
     width: 100%;
     padding: 6px;
-}
+}*/
 
-.buttons button {
+/*.buttons button {
     margin-right: 10px;
     margin-top: 10px;
-}
+}*/
 
-.mensaje {
+/*.mensaje {
     margin-top: 10px;
     font-weight: bold;
     color: red;
-}
+}*/
 </style>
