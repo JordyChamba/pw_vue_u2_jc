@@ -1,22 +1,52 @@
 <template>
     <div class="container">
-        <img src="https://yesno.wtf/assets/yes/5-64c2804cc48057b94fd0b3eaf323d92c.gif" alt="Error">
+        <img v-if="imagen" :src="imagen" alt="Yes or No">
         <br>
         <div class="pregunta-container">
-            <input type="text" placeholder="Hazme una pregunta">
+            <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
             <p>Recuerda terminar con el signo de interrogación (?)</p>
-            <h2>Seré millonario?</h2>
-            <h1>Yes, No</h1>
+            <h2 v-if="pregunta">{{ pregunta }}</h2>
+            <h1 v-if="respuesta">{{ respuesta }}</h1>
         </div>
 
     </div>
 </template>
 
-<script>
-export default {
 
+<script>
+import { consumirFacade } from '../clients/YesNoClient.js';
+
+export default {
+    data() {
+        return {
+            pregunta: "",
+            respuesta: "",
+            imagen: "",
+        };
+    },
+    watch: {
+        pregunta(value) {
+            this.consumirAPI(value);
+        },
+    },
+    methods: {
+        async consumirAPI(pregunta) {
+            if (!pregunta.endsWith('?')) {
+                return;
+            }
+
+            try {
+                const data = await consumirFacade();
+                this.respuesta = data.answer;
+                this.imagen = data.image;
+            } catch (error) {
+                console.error('Error al consumir la API:', error);
+            }
+        }
+    }
 }
 </script>
+
 
 <style scoped>
 h2 {
@@ -26,7 +56,7 @@ h2 {
 
 h1 {
     color: white;
-    margin-top: 150px;
+    margin-top: 20px;
 }
 
 p {
@@ -60,6 +90,10 @@ img {
 
 .pregunta-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     top: 50%;
     border: 3px solid white;
     padding: 40px;
@@ -68,5 +102,14 @@ img {
     max-width: 600px;
     margin: 0 auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+</style>
+
+<style>
+body {
+    background-color: #1a1a1a;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 </style>
