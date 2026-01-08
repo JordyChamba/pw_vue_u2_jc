@@ -2,17 +2,17 @@
   <div>
     <!--contadorView />-->
     <!--DirectivasView />-->
-    <PreguntaView />
+    <PokemonView />
   </div>
 </template>
 
 <script>
-import contadorView from './views/contadorView.vue';
-import DirectivasView from './views/DirectivasView.vue';
-import PreguntaView from './views/PreguntaView.vue';
+//import contadorView from './views/contadorView.vue';
+//import DirectivasView from './views/DirectivasView.vue';
+import PokemonView from './views/pokemonView.vue';
 export default {
   components: {
-    contadorView, DirectivasView, PreguntaView,
+    PokemonView,
   }
 }
 </script>

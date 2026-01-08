@@ -7,4 +7,5 @@ const consumirAPI = async () => {
 
 export async function consumirFacade() {
     return await consumirAPI();
+
 }
