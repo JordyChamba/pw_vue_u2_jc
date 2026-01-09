@@ -37,16 +37,13 @@ export default {
     methods: {
         async cargarJuego() {
             try {
-                // Obtener 4 pokemons aleatorios
                 const pokemons = await obtenerPokemons();
                 this.pokemonList = pokemons;
                 this.pokemonOptions = pokemons.map(p => p.name);
 
-                // Seleccionar uno de los 4 como el correcto
                 const randomIndex = Math.floor(Math.random() * 4);
                 this.pokemon = pokemons[randomIndex];
 
-                // Obtener la imagen del pokemon seleccionado
                 this.imageUrl = await obtenerImagen(this.pokemon.id);
             } catch (error) {
                 console.error('Error al cargar el juego:', error);
@@ -54,10 +51,10 @@ export default {
         },
         handleAnswer(isCorrect) {
             if (isCorrect) {
-                this.message = '¡Correcto!';
+                this.message = '¡Ha seleccionado el Pokemon correcto!';
                 this.messageClass = 'correct';
             } else {
-                this.message = `Incorrecto. Era ${this.pokemon.name}`;
+                this.message = `Ha seleccionado el Pokemon incorrecto. Era ${this.pokemon.name}`;
                 this.messageClass = 'incorrect';
             }
             setTimeout(() => {
@@ -87,15 +84,19 @@ h1 {
     margin: 20px 0;
     padding: 10px;
     border-radius: 5px;
+    margin-left: 650px;
 }
 
 .correct {
     background-color: #4caf50;
     color: white;
+    width: 500px;
+
 }
 
 .incorrect {
     background-color: #f44336;
     color: white;
+    width: 600px;
 }
 </style>
