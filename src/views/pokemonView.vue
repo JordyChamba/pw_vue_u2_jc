@@ -31,9 +31,6 @@ export default {
             messageClass: ''
         }
     },
-    mounted() {
-        this.cargarJuego();
-    },
     methods: {
         async cargarJuego() {
             try {
@@ -65,6 +62,39 @@ export default {
                 this.cargarJuego();
             }, 2000);
         }
+    },
+
+    // === CREACIÓN: Inicialización del componente ===
+    beforeCreate() {
+        console.log('beforeCreate: Instancia creada, data y métodos aún no disponibles');
+    },
+    created() {
+        console.log('created: Data, computed, methods y watchers ya están disponibles');
+    },
+
+    // === MONTAJE: Renderización en el DOM ===
+    beforeMount() {
+        console.log('beforeMount: Antes de insertar el componente en el DOM');
+    },
+    mounted() {
+        console.log('mounted: Componente insertado en el DOM, elementos accesibles');
+        this.cargarJuego();
+    },
+
+    // === ACTUALIZACIÓN: Cambios reactivos ===
+    beforeUpdate() {
+        console.log('hubo cambio en un data o props del componente y view esta por renderizar el cambio');
+    },
+    updated() {
+        console.log('updated: ya se actualizo, tras la re-renderizacion');
+    },
+
+    // === DESTRUCCIÓN: Limpieza del componente ===
+    beforeUnmount() {
+        console.log('beforeUnmount: Antes de destruir el componente');
+    },
+    unmounted() {
+        console.log('unmounted: Componente destruido, limpieza completada');
     }
 }
 </script>
